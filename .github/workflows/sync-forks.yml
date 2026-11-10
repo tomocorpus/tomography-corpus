@@ -115,4 +115,27 @@ jobs:
               echo ""
               awk -F'\t' '$3 ~ /erreur/ {print "- `"$1"` — "$3}' rapport.tsv
             fi
+          }
+
+          # Avertissements GitHub : visibles dans le résumé du run et dans l'onglet
+          # Actions, sans faire échouer le job (un fork durablement modifié ne doit
+          # pas peindre le workflow en rouge chaque lundi).
+          if [ "$erreur" -gt 0 ]; then
+            liste="$(awk -F'\t' '$3 ~ /erreur/ {printf "%s ", $1}' rapport.tsv)"
+            echo "::warning title=Synchronisation incomplète::$erreur dépôt(s) en erreur : $liste"
+            sansscope="$(awk -F'\t' '$3 ~ /workflow/ {printf "%s ", $1}' rapport.tsv)"
+            if [ -n "$sansscope" ]; then
+              echo "::warning title=Scope workflow manquant::ces dépôts modifient .github/workflows en amont et exigent la permission Workflows (write) : $sansscope"
+            fi
+          fi
+          if [ "$conflict" -gt 0 ]; then
+            liste="$(awk -F'\t' '$3 ~ /conflit/ {printf "%s ", $1}' rapport.tsv)"
+            echo "::warning title=Conflits de fusion::$conflict fork(s) divergents, non écrasés : $liste"
+          fi
+
+          echo "récapitulatif : examinés=$total fusionnés=$sync à_jour=$uptodate conflits=$conflict erreurs=$erreur"
+          {
+            printf '\n---\n\n'
+            printf '<sub>Généré par sync-forks.yml — exécution [%s](%s/%s/actions/runs/%s)</sub>\n' \
+              "$GITHUB_RUN_ID" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID"
           } >> "$GITHUB_STEP_SUMMARY"
