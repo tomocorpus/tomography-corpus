@@ -2,16 +2,16 @@
 
 Corpus `tomocorpus` : dépôts consacrés à la **tomographie**, à la **transformée de Radon** et aux techniques voisines.
 
-**60 dépôts** — 59 forks et 1 dépôt original.
+**61 dépôts** — 59 forks, 1 miroir SVN, 1 dépôt original.
 
 Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomography>
 
-> Dates = dernier push du **dépôt amont** pour un fork, du dépôt lui-même s'il est original.
+> Dates = dernier commit de l'**amont** pour un fork ou un miroir, du dépôt lui-même s'il est original.
 
 
 ## Reconstruction CT
 
-| Dépôt | Amont | Dernier push |
+| Dépôt | Amont | Dernier commit |
 |---|---|---|
 | [`Beam-hardening-correction`](https://github.com/tomocorpus/Beam-hardening-correction) | [`CarlaRomano/Beam-hardening-correction`](https://github.com/CarlaRomano/Beam-hardening-correction) | 2022-11-12 |
 | [`cmiv-ctmod`](https://github.com/tomocorpus/cmiv-ctmod) | [`AlexandrMalusek/cmiv-ctmod`](https://github.com/AlexandrMalusek/cmiv-ctmod) | 2015-06-29 |
@@ -34,7 +34,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## Boîtes à outils de reconstruction
 
-| Dépôt | Amont | Dernier push |
+| Dépôt | Amont | Dernier commit |
 |---|---|---|
 | [`astra-toolbox`](https://github.com/tomocorpus/astra-toolbox) | [`astra-toolbox/astra-toolbox`](https://github.com/astra-toolbox/astra-toolbox) | 2026-11-10 |
 | [`flexbox`](https://github.com/tomocorpus/flexbox) | [`cicwi/flexbox`](https://github.com/cicwi/flexbox) | 2024-03-01 |
@@ -52,7 +52,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## Transformée de Radon
 
-| Dépôt | Amont | Dernier push |
+| Dépôt | Amont | Dernier commit |
 |---|---|---|
 | [`expRadonUSFLT`](https://github.com/tomocorpus/expRadonUSFLT) | [`nikitinvv/expRadonUSFLT`](https://github.com/nikitinvv/expRadonUSFLT) | 2019-06-08 |
 | [`guirec`](https://github.com/tomocorpus/guirec) | [`nikitinvv/guirec`](https://github.com/nikitinvv/guirec) | 2017-11-09 |
@@ -68,7 +68,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## Analyse et visualisation
 
-| Dépôt | Amont | Dernier push |
+| Dépôt | Amont | Dernier commit |
 |---|---|---|
 | [`open_iA`](https://github.com/tomocorpus/open_iA) | [`3dct/open_iA`](https://github.com/3dct/open_iA) | 2026-08-28 |
 | [`PDM`](https://github.com/tomocorpus/PDM) | [`cicwi/PDM`](https://github.com/cicwi/PDM) | 2017-06-28 |
@@ -77,10 +77,11 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## Tomographie d'impédance électrique (EIT)
 
-| Dépôt | Amont | Dernier push |
+| Dépôt | Amont | Dernier commit |
 |---|---|---|
 | [`BasisSimulator.jl`](https://github.com/tomocorpus/BasisSimulator.jl) | [`MolloiLab/BasisSimulator.jl`](https://github.com/MolloiLab/BasisSimulator.jl) | 2026-11-09 |
 | [`CalderonEITFEM`](https://github.com/tomocorpus/CalderonEITFEM) | [`DanielBoigk/CalderonEITFEM`](https://github.com/DanielBoigk/CalderonEITFEM) | 2025-03-13 |
+| [`eidors-svn`](https://github.com/tomocorpus/eidors-svn) | miroir de `svn://svn.code.sf.net/p/eidors3d/code/trunk` | 2026-11-04 |
 | [`EITDenoiser.jl`](https://github.com/tomocorpus/EITDenoiser.jl) | [`DanielBoigk/EITDenoiser.jl`](https://github.com/DanielBoigk/EITDenoiser.jl) | 2026-11-07 |
 | [`EITwithTV`](https://github.com/tomocorpus/EITwithTV) | [`DanielBoigk/EITwithTV`](https://github.com/DanielBoigk/EITwithTV) | 2025-09-25 |
 | [`ModularEIT.jl`](https://github.com/tomocorpus/ModularEIT.jl) | [`DanielBoigk/ModularEIT.jl`](https://github.com/DanielBoigk/ModularEIT.jl) | 2026-11-07 |
@@ -90,7 +91,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## MRI et microscopie
 
-| Dépôt | Amont | Dernier push |
+| Dépôt | Amont | Dernier commit |
 |---|---|---|
 | [`EMIRT.jl`](https://github.com/tomocorpus/EMIRT.jl) | [`seung-lab/EMIRT.jl`](https://github.com/seung-lab/EMIRT.jl) | 2018-09-28 |
 | [`mirt`](https://github.com/tomocorpus/mirt) | [`JeffFessler/mirt`](https://github.com/JeffFessler/mirt) | 2026-04-20 |
@@ -99,10 +100,16 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## Données et documentation
 
-| Dépôt | Amont | Dernier push |
+| Dépôt | Amont | Dernier commit |
 |---|---|---|
 | [`tomobank`](https://github.com/tomocorpus/tomobank) | [`tomography/tomobank`](https://github.com/tomography/tomobank) | 2026-09-01 |
 | [`tomopedia.github.io`](https://github.com/tomocorpus/tomopedia.github.io) | [`tomopedia/tomopedia.github.io`](https://github.com/tomopedia/tomopedia.github.io) | 2025-05-30 |
+
+## Miroirs SVN
+
+`eidors-svn` n'est pas un fork : GitHub ne sait pas forker un dépôt Subversion. C'est une conversion du trunk SVN en git, **historique complet conservé** (7294 commits), sans lien de fork avec l'amont.
+
+Pour rafraîchir : `git svn fetch` depuis un clone du dépôt source, puis `git push` — la synchronisation automatique ne le couvre pas.
 
 ## Synchronisation des forks
 
@@ -110,7 +117,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 Un fork modifié localement renvoie un conflit : il est **signalé, jamais écrasé**.
 
-Les dépôts originaux ne sont pas concernés par la synchronisation.
+Les dépôts originaux et les miroirs SVN ne sont pas concernés par la synchronisation.
 
 | Élément | Où | Valeur |
 |---|---|---|
