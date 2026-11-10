@@ -2,16 +2,16 @@
 
 Corpus `tomocorpus` : dépôts consacrés à la **tomographie**, à la **transformée de Radon** et aux techniques voisines.
 
-**53 dépôts**, tous des forks d'un projet amont.
+**54 dépôts** — 53 forks et 1 dépôt original.
 
 Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomography>
 
-> Dates = dernier push du **dépôt amont**, pas de votre fork.
+> Dates = dernier push du **dépôt amont** pour un fork, du dépôt lui-même s'il est original.
 
 
 ## Reconstruction CT
 
-| Dépôt | Amont | Dernier push amont |
+| Dépôt | Amont | Dernier push |
 |---|---|---|
 | [`Beam-hardening-correction`](https://github.com/tomocorpus/Beam-hardening-correction) | [`CarlaRomano/Beam-hardening-correction`](https://github.com/CarlaRomano/Beam-hardening-correction) | 2022-11-12 |
 | [`cmiv-ctmod`](https://github.com/tomocorpus/cmiv-ctmod) | [`AlexandrMalusek/cmiv-ctmod`](https://github.com/AlexandrMalusek/cmiv-ctmod) | 2015-06-29 |
@@ -22,6 +22,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 | [`easy_computed_tomography.github.io`](https://github.com/tomocorpus/easy_computed_tomography.github.io) | [`rehmanali1994/easy_computed_tomography.github.io`](https://github.com/rehmanali1994/easy_computed_tomography.github.io) | 2019-12-21 |
 | [`fbpconv_tf`](https://github.com/tomocorpus/fbpconv_tf) | [`panakino/fbpconv_tf`](https://github.com/panakino/fbpconv_tf) | 2018-04-02 |
 | [`FBPConvNet`](https://github.com/tomocorpus/FBPConvNet) | [`panakino/FBPConvNet`](https://github.com/panakino/FBPConvNet) | 2018-04-10 |
+| [`IFBP`](https://github.com/tomocorpus/IFBP) | — (dépôt original) | 2018-01-15 |
 | [`multi-channel-X-ray-CT`](https://github.com/tomocorpus/multi-channel-X-ray-CT) | [`dkazanc/multi-channel-X-ray-CT`](https://github.com/dkazanc/multi-channel-X-ray-CT) | 2020-07-31 |
 | [`NXCT`](https://github.com/tomocorpus/NXCT) | [`robintwhite/NXCT`](https://github.com/robintwhite/NXCT) | 2019-09-30 |
 | [`PhDThesis`](https://github.com/tomocorpus/PhDThesis) | [`AnderBiguri/PhDThesis`](https://github.com/AnderBiguri/PhDThesis) | 2019-01-21 |
@@ -33,7 +34,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## Boîtes à outils de reconstruction
 
-| Dépôt | Amont | Dernier push amont |
+| Dépôt | Amont | Dernier push |
 |---|---|---|
 | [`astra-toolbox`](https://github.com/tomocorpus/astra-toolbox) | [`astra-toolbox/astra-toolbox`](https://github.com/astra-toolbox/astra-toolbox) | 2026-11-10 |
 | [`flexbox`](https://github.com/tomocorpus/flexbox) | [`cicwi/flexbox`](https://github.com/cicwi/flexbox) | 2024-03-01 |
@@ -51,7 +52,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## Transformée de Radon
 
-| Dépôt | Amont | Dernier push amont |
+| Dépôt | Amont | Dernier push |
 |---|---|---|
 | [`expRadonUSFLT`](https://github.com/tomocorpus/expRadonUSFLT) | [`nikitinvv/expRadonUSFLT`](https://github.com/nikitinvv/expRadonUSFLT) | 2019-06-08 |
 | [`guirec`](https://github.com/tomocorpus/guirec) | [`nikitinvv/guirec`](https://github.com/nikitinvv/guirec) | 2017-11-09 |
@@ -67,7 +68,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## Analyse et visualisation
 
-| Dépôt | Amont | Dernier push amont |
+| Dépôt | Amont | Dernier push |
 |---|---|---|
 | [`open_iA`](https://github.com/tomocorpus/open_iA) | [`3dct/open_iA`](https://github.com/3dct/open_iA) | 2026-08-28 |
 | [`PDM`](https://github.com/tomocorpus/PDM) | [`cicwi/PDM`](https://github.com/cicwi/PDM) | 2017-06-28 |
@@ -76,14 +77,14 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## EIT et autre modalité
 
-| Dépôt | Amont | Dernier push amont |
+| Dépôt | Amont | Dernier push |
 |---|---|---|
 | [`OpenEIT`](https://github.com/tomocorpus/OpenEIT) | [`OpenEIT/OpenEIT`](https://github.com/OpenEIT/OpenEIT) | 2025-07-22 |
 | [`pyEIT`](https://github.com/tomocorpus/pyEIT) | [`eitcom/pyEIT`](https://github.com/eitcom/pyEIT) | 2025-12-12 |
 
 ## MRI et microscopie
 
-| Dépôt | Amont | Dernier push amont |
+| Dépôt | Amont | Dernier push |
 |---|---|---|
 | [`EMIRT.jl`](https://github.com/tomocorpus/EMIRT.jl) | [`seung-lab/EMIRT.jl`](https://github.com/seung-lab/EMIRT.jl) | 2018-09-28 |
 | [`mirt`](https://github.com/tomocorpus/mirt) | [`JeffFessler/mirt`](https://github.com/JeffFessler/mirt) | 2026-04-20 |
@@ -92,7 +93,7 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 
 ## Données et documentation
 
-| Dépôt | Amont | Dernier push amont |
+| Dépôt | Amont | Dernier push |
 |---|---|---|
 | [`tomobank`](https://github.com/tomocorpus/tomobank) | [`tomography/tomobank`](https://github.com/tomography/tomobank) | 2026-09-01 |
 | [`tomopedia.github.io`](https://github.com/tomocorpus/tomopedia.github.io) | [`tomopedia/tomopedia.github.io`](https://github.com/tomopedia/tomopedia.github.io) | 2025-05-30 |
@@ -102,6 +103,8 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 `sync-forks.yml` fusionne chaque lundi 06:00 (Europe/Paris) l'amont dans chaque fork via `merge-upstream`.
 
 Un fork modifié localement renvoie un conflit : il est **signalé, jamais écrasé**.
+
+Les dépôts originaux ne sont pas concernés par la synchronisation.
 
 | Élément | Où | Valeur |
 |---|---|---|
