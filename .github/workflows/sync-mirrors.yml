@@ -27,88 +27,77 @@ permissions:
 
 jobs:
   mirror:
-    name: ${{ matrix.name }}
-    needs: plan
     runs-on: ubuntu-latest
     # L'image du runner embarque un git 2.53 dont git-svn refuse la dependance
     # (E: conflicting assignments). Dans Debian, git et git-svn viennent du
     # meme depot. debian-slim n'embarque pas git : il est installe juste apres.
     container: debian:bookworm-slim
     timeout-minutes: 60
-    strategy:
-      fail-fast: false
-      matrix:
-        include: ${{ fromJSON(needs.plan.outputs.matrix) }}
     steps:
+      - uses: actions/checkout@v4
+
       - name: Refleter l'amont
         env:
           SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
-          NAME: ${{ matrix.name }}
-          OWNER: ${{ matrix.owner }}
-          URL: ${{ matrix.url }}
-          HTTPS_ALT: ${{ matrix.https_alt }}
-          BRANCH: ${{ matrix.branch }}
-          TRUNK: ${{ matrix.trunk }}
         run: |
           apt-get update -qq
-          apt-get install -y -qq --no-install-recommends git git-svn subversion python3 ca-certificates
+          apt-get install -y -qq --no-install-recommends \
+            git git-svn subversion python3 jq ca-certificates
           git config --global user.name "mirror-sync"
           git config --global user.email "mirror-sync@users.noreply.github.com"
 
-          if ! svnrdump dump --non-interactive "$URL/$TRUNK" > /tmp/src.svn 2>/tmp/dump.err; then
-            echo "::warning title=svn:// injoignable::nouvelle tentative via $HTTPS_ALT"
-            svnrdump dump --non-interactive "$HTTPS_ALT/$TRUNK" > /tmp/src.svn
-          fi
-          revs=$(grep -c '^Revision-number' /tmp/src.svn)
-          echo "dump : $(( $(stat -c %s /tmp/src.svn) / 1048576 )) Mio, $revs revisions"
-          if [ "$revs" -lt 100 ]; then
-            echo "::error title=Dump incomplet::$revs revisions seulement"
-            exit 1
-          fi
+          # Boucle plutot que matrice : meme resultat, sans dependre de
+          # l'expansion d'une matrice construite a l'execution.
+          jq -r '.mirrors[] | [.name, .owner, .url, .https_alt, .branch, .trunk] | @tsv' mirrors.json \
+            > /tmp/mirrors.tsv
+          echo "miroirs : $(wc -l < /tmp/mirrors.tsv)"
 
-          svnadmin create /tmp/svnrepo
-          svnadmin load -q /tmp/svnrepo < /tmp/src.svn
+          while IFS="$(printf '\t')" read -r NAME OWNER URL HTTPS_ALT BRANCH TRUNK; do
+            echo "=== ${NAME} (${OWNER}/${NAME}, branche ${BRANCH}) ==="
 
-          # Les auteurs SVN sont des identifiants nus : git exige un nom et une
-          # adresse. Table deterministe, sinon les SHA changeraient a chaque passage.
-          svn log -q -r 1:HEAD file:///tmp/svnrepo \
-            | awk -F'|' 'NF>=2 {gsub(/^[ \t]+|[ \t]+$/,"",$1); gsub(/^[ \t]+|[ \t]+$/,"",$2); if ($1 ~ /^r[0-9]+$/ && $2 != "") print $2}' \
-            | sort -u > /tmp/svn-authors.txt
-          { cat /tmp/svn-authors.txt; echo "(no author)"; } \
-            | awk '{n=($0=="(no author)"?"unknown-svn-author":$0); print $0" = "n" <"n"@users.sourceforge.net>"}' \
-            > /tmp/authors.txt
-          echo "auteurs mappes : $(wc -l < /tmp/authors.txt)"
+            if ! svnrdump dump --non-interactive "$URL/$TRUNK" > /tmp/src.svn 2>/tmp/dump.err; then
+              echo "::warning title=svn:// injoignable::nouvelle tentative via $HTTPS_ALT"
+              svnrdump dump --non-interactive "$HTTPS_ALT/$TRUNK" > /tmp/src.svn
+            fi
+            revs=$(grep -c '^Revision-number' /tmp/src.svn)
+            echo "dump : $(( $(stat -c %s /tmp/src.svn) / 1048576 )) Mio, $revs revisions"
+            if [ "$revs" -lt 100 ]; then
+              echo "::error title=Dump incomplet::$revs revisions seulement"
+              exit 1
+            fi
 
-          # --rewrite-root fige la ligne git-svn-id sur l'URL amont reelle.
-          git svn clone -A /tmp/authors.txt --trunk="$TRUNK" --quiet \
-            --rewrite-root="$URL" file:///tmp/svnrepo src
-          cd src
-          git branch -M "$BRANCH"
-          echo "construit : $(git rev-parse HEAD) ($(git rev-list --count HEAD) commits, $(git ls-files | wc -l) fichiers)"
+            rm -rf /tmp/svnrepo /tmp/src
+            svnadmin create /tmp/svnrepo
+            svnadmin load -q /tmp/svnrepo < /tmp/src.svn
 
-          git remote add target "https://x-access-token:${SYNC_TOKEN}@github.com/${OWNER}/${NAME}.git"
-          git push --force target "HEAD:refs/heads/${BRANCH}" 2>&1 | tail -3
-          # tail masque le code de sortie : sans PIPESTATUS un refus 403
-          # laissait le job au vert en pretendant avoir refleter l'amont.
-          push_status=${PIPESTATUS[0]}
-          git push --force --tags target 2>/dev/null | tail -1 || true
-          pushed=$(git ls-remote target "refs/heads/${BRANCH}" | cut -f1)
-          if [ "$push_status" -ne 0 ] || [ "$pushed" != "$(git rev-parse HEAD)" ]; then
-            echo "::error title=Publication refusee::local $(git rev-parse HEAD), distant ${pushed:-aucune branche} — voir le message remote"
-            exit 1
-          fi
-          echo "publie : ${pushed}"
+            # Les auteurs SVN sont des identifiants nus : git exige un nom et
+            # une adresse. Table deterministe, sinon les SHA changeraient.
+            svn log -q -r 1:HEAD file:///tmp/svnrepo \
+              | awk -F'|' 'NF>=2 {gsub(/^[ \t]+|[ \t]+$/,"",$1); gsub(/^[ \t]+|[ \t]+$/,"",$2); if ($1 ~ /^r[0-9]+$/ && $2 != "") print $2}' \
+              | sort -u > /tmp/svn-authors.txt
+            { cat /tmp/svn-authors.txt; echo "(no author)"; } \
+              | awk '{n=($0=="(no author)"?"unknown-svn-author":$0); print $0" = "n" <"n"@users.sourceforge.net>"}' \
+              > /tmp/authors.txt
+            echo "auteurs mappes : $(wc -l < /tmp/authors.txt)"
 
-  plan:
-    name: Matrice
-    runs-on: ubuntu-latest
-    outputs:
-      matrix: ${{ steps.build.outputs.matrix }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Construire la matrice
-        id: build
-        run: |
-          jq -c '{include: .mirrors}' mirrors.json > /tmp/m.json
-          echo "matrix=$(cat /tmp/m.json)" >> "$GITHUB_OUTPUT"
-          echo "miroirs : $(jq '.include | length' /tmp/m.json)"
+            # --rewrite-root fige la ligne git-svn-id sur l'URL amont reelle.
+            git svn clone -A /tmp/authors.txt --trunk="$TRUNK" --quiet \
+              --rewrite-root="$URL" file:///tmp/svnrepo /tmp/src
+            cd /tmp/src
+            git branch -M "$BRANCH"
+            echo "construit : $(git rev-parse HEAD) ($(git rev-list --count HEAD) commits, $(git ls-files | wc -l) fichiers)"
+
+            git remote add target "https://x-access-token:${SYNC_TOKEN}@github.com/${OWNER}/${NAME}.git"
+            git push --force target "HEAD:refs/heads/${BRANCH}" 2>&1 | tail -3
+            # tail masque le code de sortie : sans PIPESTATUS un refus 403
+            # laissait le job au vert en pretendant avoir refleter l'amont.
+            push_status=${PIPESTATUS[0]}
+            git push --force --tags target 2>/dev/null | tail -1 || true
+            pushed=$(git ls-remote target "refs/heads/${BRANCH}" | cut -f1)
+            if [ "$push_status" -ne 0 ] || [ "$pushed" != "$(git rev-parse HEAD)" ]; then
+              echo "::error title=Publication refusee::local $(git rev-parse HEAD), distant ${pushed:-aucune branche} — voir le message remote"
+              exit 1
+            fi
+            echo "publie : ${pushed}"
+            cd "$GITHUB_WORKSPACE"
+          done < /tmp/mirrors.tsv
