@@ -1,0 +1,12 @@
+{
+ "mirrors": [
+  {
+   "name": "eidors-svn",
+   "owner": "tomocorpus",
+   "url": "svn://svn.code.sf.net/p/eidors3d/code",
+   "https_alt": "https://svn.code.sf.net/p/eidors3d/code",
+   "branch": "master",
+   "trunk": "trunk"
+  }
+ ]
+}
