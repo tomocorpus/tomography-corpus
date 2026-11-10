@@ -1,108 +1,109 @@
 # Tomography corpus
 
-Corpus des dépôts `tomocorpus` consacrés à la **tomographie**, à la **transformée de Radon** et aux techniques voisines.
+Corpus `tomocorpus` : dépôts consacrés à la **tomographie**, à la **transformée de Radon** et aux techniques voisines.
 
-**53 dépôts** — dont **0 forks** d'un projet amont.
+**53 dépôts**, tous des forks d'un projet amont.
 
 Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomography>
 
-> Les dates indiquées sont celles du **dernier push du dépôt amont**, régénérées à chaque synchronisation.
+> Dates = dernier push du **dépôt amont**, pas de votre fork.
+
 
 ## Reconstruction CT
 
 | Dépôt | Amont | Dernier push amont |
 |---|---|---|
-| [`Beam-hardening-correction`](https://github.com/tomocorpus/Beam-hardening-correction) | _dépôt propre_ | 2019-06-13 |
-| [`cmiv-ctmod`](https://github.com/tomocorpus/cmiv-ctmod) | _dépôt propre_ | 2015-06-29 |
-| [`CNN-MAR`](https://github.com/tomocorpus/CNN-MAR) | _dépôt propre_ | 2019-04-06 |
-| [`Computed-Tomography-Simulator`](https://github.com/tomocorpus/Computed-Tomography-Simulator) | _dépôt propre_ | 2019-05-19 |
-| [`CT-Image-Reconstruction`](https://github.com/tomocorpus/CT-Image-Reconstruction) | _dépôt propre_ | 2019-08-28 |
-| [`Deep-Learning-Computed-Tomography`](https://github.com/tomocorpus/Deep-Learning-Computed-Tomography) | _dépôt propre_ | 2016-10-15 |
-| [`easy_computed_tomography.github.io`](https://github.com/tomocorpus/easy_computed_tomography.github.io) | _dépôt propre_ | 2017-04-02 |
-| [`fbpconv_tf`](https://github.com/tomocorpus/fbpconv_tf) | _dépôt propre_ | 2018-04-02 |
-| [`FBPConvNet`](https://github.com/tomocorpus/FBPConvNet) | _dépôt propre_ | 2018-04-10 |
-| [`multi-channel-X-ray-CT`](https://github.com/tomocorpus/multi-channel-X-ray-CT) | _dépôt propre_ | 2018-06-07 |
-| [`NXCT`](https://github.com/tomocorpus/NXCT) | _dépôt propre_ | 2019-01-06 |
-| [`PhDThesis`](https://github.com/tomocorpus/PhDThesis) | _dépôt propre_ | 2019-01-21 |
-| [`PWLS-ULTRA-for-Low-Dose-3D-CT-Image-Reconstruction`](https://github.com/tomocorpus/PWLS-ULTRA-for-Low-Dose-3D-CT-Image-Reconstruction) | _dépôt propre_ | 2019-07-27 |
-| [`rectv_gpu`](https://github.com/tomocorpus/rectv_gpu) | _dépôt propre_ | 2018-11-27 |
-| [`simpleCT`](https://github.com/tomocorpus/simpleCT) | _dépôt propre_ | 2019-05-21 |
-| [`TomoGAN`](https://github.com/tomocorpus/TomoGAN) | _dépôt propre_ | 2019-10-31 |
-| [`Tomography`](https://github.com/tomocorpus/Tomography) | _dépôt propre_ | 2026-11-10 |
-| [`TomoPhantom`](https://github.com/tomocorpus/TomoPhantom) | _dépôt propre_ | 2019-07-08 |
-| [`tomorectv3d`](https://github.com/tomocorpus/tomorectv3d) | _dépôt propre_ | 2019-05-19 |
-| [`WalnutReconstructionCodes`](https://github.com/tomocorpus/WalnutReconstructionCodes) | _dépôt propre_ | 2019-07-31 |
+| [`Beam-hardening-correction`](https://github.com/tomocorpus/Beam-hardening-correction) | [`CarlaRomano/Beam-hardening-correction`](https://github.com/CarlaRomano/Beam-hardening-correction) | 2022-11-12 |
+| [`cmiv-ctmod`](https://github.com/tomocorpus/cmiv-ctmod) | [`AlexandrMalusek/cmiv-ctmod`](https://github.com/AlexandrMalusek/cmiv-ctmod) | 2015-06-29 |
+| [`CNN-MAR`](https://github.com/tomocorpus/CNN-MAR) | [`yanbozhang007/CNN-MAR`](https://github.com/yanbozhang007/CNN-MAR) | 2019-04-06 |
+| [`Computed-Tomography-Simulator`](https://github.com/tomocorpus/Computed-Tomography-Simulator) | [`whinyadventure/Computed-Tomography-Simulator`](https://github.com/whinyadventure/Computed-Tomography-Simulator) | 2019-05-19 |
+| [`CT-Image-Reconstruction`](https://github.com/tomocorpus/CT-Image-Reconstruction) | [`SanketD92/CT-Image-Reconstruction`](https://github.com/SanketD92/CT-Image-Reconstruction) | 2019-09-06 |
+| [`Deep-Learning-Computed-Tomography`](https://github.com/tomocorpus/Deep-Learning-Computed-Tomography) | [`wuerflts/Deep-Learning-Computed-Tomography`](https://github.com/wuerflts/Deep-Learning-Computed-Tomography) | 2016-10-15 |
+| [`easy_computed_tomography.github.io`](https://github.com/tomocorpus/easy_computed_tomography.github.io) | [`rehmanali1994/easy_computed_tomography.github.io`](https://github.com/rehmanali1994/easy_computed_tomography.github.io) | 2019-12-21 |
+| [`fbpconv_tf`](https://github.com/tomocorpus/fbpconv_tf) | [`panakino/fbpconv_tf`](https://github.com/panakino/fbpconv_tf) | 2018-04-02 |
+| [`FBPConvNet`](https://github.com/tomocorpus/FBPConvNet) | [`panakino/FBPConvNet`](https://github.com/panakino/FBPConvNet) | 2018-04-10 |
+| [`multi-channel-X-ray-CT`](https://github.com/tomocorpus/multi-channel-X-ray-CT) | [`dkazanc/multi-channel-X-ray-CT`](https://github.com/dkazanc/multi-channel-X-ray-CT) | 2020-07-31 |
+| [`NXCT`](https://github.com/tomocorpus/NXCT) | [`robintwhite/NXCT`](https://github.com/robintwhite/NXCT) | 2019-09-30 |
+| [`PhDThesis`](https://github.com/tomocorpus/PhDThesis) | [`AnderBiguri/PhDThesis`](https://github.com/AnderBiguri/PhDThesis) | 2019-01-21 |
+| [`PWLS-ULTRA-for-Low-Dose-3D-CT-Image-Reconstruction`](https://github.com/tomocorpus/PWLS-ULTRA-for-Low-Dose-3D-CT-Image-Reconstruction) | [`xuehangzheng/PWLS-ULTRA-for-Low-Dose-3D-CT-Image-Reconstruction`](https://github.com/xuehangzheng/PWLS-ULTRA-for-Low-Dose-3D-CT-Image-Reconstruction) | 2020-05-26 |
+| [`simpleCT`](https://github.com/tomocorpus/simpleCT) | [`gianthk/simpleCT`](https://github.com/gianthk/simpleCT) | 2021-04-28 |
+| [`TomoGAN`](https://github.com/tomocorpus/TomoGAN) | [`ramsesproject/TomoGAN`](https://github.com/ramsesproject/TomoGAN) | 2021-03-15 |
+| [`Tomography`](https://github.com/tomocorpus/Tomography) | [`jells123/Tomography`](https://github.com/jells123/Tomography) | 2018-04-03 |
+| [`WalnutReconstructionCodes`](https://github.com/tomocorpus/WalnutReconstructionCodes) | [`cicwi/WalnutReconstructionCodes`](https://github.com/cicwi/WalnutReconstructionCodes) | 2023-08-17 |
 
-## Boîtes à outils
+## Boîtes à outils de reconstruction
 
 | Dépôt | Amont | Dernier push amont |
 |---|---|---|
-| [`astra-toolbox`](https://github.com/tomocorpus/astra-toolbox) | _dépôt propre_ | 2019-07-08 |
-| [`flexbox`](https://github.com/tomocorpus/flexbox) | _dépôt propre_ | 2018-09-26 |
-| [`flexTOMO`](https://github.com/tomocorpus/flexTOMO) | _dépôt propre_ | 2019-09-10 |
-| [`MotionTIGRE`](https://github.com/tomocorpus/MotionTIGRE) | _dépôt propre_ | 2018-06-01 |
-| [`Savu`](https://github.com/tomocorpus/Savu) | _dépôt propre_ | 2019-07-09 |
-| [`SliceRecon`](https://github.com/tomocorpus/SliceRecon) | _dépôt propre_ | 2019-11-14 |
-| [`TIGRE`](https://github.com/tomocorpus/TIGRE) | _dépôt propre_ | 2019-07-03 |
-| [`tomocam`](https://github.com/tomocorpus/tomocam) | _dépôt propre_ | 2018-08-18 |
-| [`TomoGPI_for_Astra`](https://github.com/tomocorpus/TomoGPI_for_Astra) | _dépôt propre_ | 2018-05-09 |
-| [`TomoPackets`](https://github.com/tomocorpus/TomoPackets) | _dépôt propre_ | 2020-01-14 |
-| [`tomopy`](https://github.com/tomocorpus/tomopy) | _dépôt propre_ | 2019-07-08 |
-| [`Tomos`](https://github.com/tomocorpus/Tomos) | _dépôt propre_ | 2018-10-02 |
-| [`xcor`](https://github.com/tomocorpus/xcor) | _dépôt propre_ | 2016-11-30 |
+| [`astra-toolbox`](https://github.com/tomocorpus/astra-toolbox) | [`astra-toolbox/astra-toolbox`](https://github.com/astra-toolbox/astra-toolbox) | 2026-11-10 |
+| [`flexbox`](https://github.com/tomocorpus/flexbox) | [`cicwi/flexbox`](https://github.com/cicwi/flexbox) | 2024-03-01 |
+| [`flexTOMO`](https://github.com/tomocorpus/flexTOMO) | [`cicwi/flexTOMO`](https://github.com/cicwi/flexTOMO) | 2024-09-13 |
+| [`MotionTIGRE`](https://github.com/tomocorpus/MotionTIGRE) | [`AnderBiguri/MotionTIGRE`](https://github.com/AnderBiguri/MotionTIGRE) | 2018-06-01 |
+| [`Savu`](https://github.com/tomocorpus/Savu) | [`DiamondLightSource/Savu`](https://github.com/DiamondLightSource/Savu) | 2023-10-16 |
+| [`SliceRecon`](https://github.com/tomocorpus/SliceRecon) | [`cicwi/SliceRecon`](https://github.com/cicwi/SliceRecon) | 2020-03-27 |
+| [`TIGRE`](https://github.com/tomocorpus/TIGRE) | [`CERN/TIGRE`](https://github.com/CERN/TIGRE) | 2026-11-10 |
+| [`tomocam`](https://github.com/tomocorpus/tomocam) | [`lbl-camera/tomocam`](https://github.com/lbl-camera/tomocam) | 2026-09-29 |
+| [`TomoGPI_for_Astra`](https://github.com/tomocorpus/TomoGPI_for_Astra) | [`nicolasgac/TomoGPI_for_Astra`](https://github.com/nicolasgac/TomoGPI_for_Astra) | 2018-05-09 |
+| [`TomoPackets`](https://github.com/tomocorpus/TomoPackets) | [`cicwi/TomoPackets`](https://github.com/cicwi/TomoPackets) | 2020-03-27 |
+| [`tomopy`](https://github.com/tomocorpus/tomopy) | [`tomopy/tomopy`](https://github.com/tomopy/tomopy) | 2025-10-03 |
+| [`Tomos`](https://github.com/tomocorpus/Tomos) | [`cicwi/Tomos`](https://github.com/cicwi/Tomos) | 2018-10-02 |
+| [`xcor`](https://github.com/tomocorpus/xcor) | [`tomography/xcor`](https://github.com/tomography/xcor) | 2016-11-30 |
 
 ## Transformée de Radon
 
 | Dépôt | Amont | Dernier push amont |
 |---|---|---|
-| [`expRadonUSFLT`](https://github.com/tomocorpus/expRadonUSFLT) | _dépôt propre_ | 2019-06-08 |
-| [`guirec`](https://github.com/tomocorpus/guirec) | _dépôt propre_ | 2017-11-09 |
-| [`hypLpRadon`](https://github.com/tomocorpus/hypLpRadon) | _dépôt propre_ | 2018-06-01 |
-| [`hypRadon_matlab`](https://github.com/tomocorpus/hypRadon_matlab) | _dépôt propre_ | 2018-09-19 |
-| [`lpRadon_matlab`](https://github.com/tomocorpus/lpRadon_matlab) | _dépôt propre_ | 2017-04-07 |
-| [`lprec`](https://github.com/tomocorpus/lprec) | _dépôt propre_ | 2019-05-29 |
-| [`lprec_seq`](https://github.com/tomocorpus/lprec_seq) | _dépôt propre_ | 2017-06-23 |
-| [`tomocg`](https://github.com/tomocorpus/tomocg) | _dépôt propre_ | 2019-07-09 |
+| [`expRadonUSFLT`](https://github.com/tomocorpus/expRadonUSFLT) | [`nikitinvv/expRadonUSFLT`](https://github.com/nikitinvv/expRadonUSFLT) | 2019-06-08 |
+| [`guirec`](https://github.com/tomocorpus/guirec) | [`nikitinvv/guirec`](https://github.com/nikitinvv/guirec) | 2017-11-09 |
+| [`hypLpRadon`](https://github.com/tomocorpus/hypLpRadon) | [`nikitinvv/hypLpRadon`](https://github.com/nikitinvv/hypLpRadon) | 2022-08-19 |
+| [`hypRadon_matlab`](https://github.com/tomocorpus/hypRadon_matlab) | [`nikitinvv/hypRadon_matlab`](https://github.com/nikitinvv/hypRadon_matlab) | 2018-09-19 |
+| [`lpRadon_matlab`](https://github.com/tomocorpus/lpRadon_matlab) | [`nikitinvv/lpRadon_matlab`](https://github.com/nikitinvv/lpRadon_matlab) | 2017-04-07 |
+| [`lprec`](https://github.com/tomocorpus/lprec) | [`nikitinvv/lprec`](https://github.com/nikitinvv/lprec) | 2025-12-21 |
+| [`lprec_seq`](https://github.com/tomocorpus/lprec_seq) | [`nikitinvv/lprec_seq`](https://github.com/nikitinvv/lprec_seq) | 2017-06-23 |
+| [`rectv_gpu`](https://github.com/tomocorpus/rectv_gpu) | [`nikitinvv/rectv_gpu`](https://github.com/nikitinvv/rectv_gpu) | 2023-04-14 |
+| [`tomocg`](https://github.com/tomocorpus/tomocg) | [`nikitinvv/tomocg`](https://github.com/nikitinvv/tomocg) | 2021-02-25 |
+| [`TomoPhantom`](https://github.com/tomocorpus/TomoPhantom) | [`dkazanc/TomoPhantom`](https://github.com/dkazanc/TomoPhantom) | 2026-09-14 |
+| [`tomorectv3d`](https://github.com/tomocorpus/tomorectv3d) | [`nikitinvv/tomorectv3d`](https://github.com/nikitinvv/tomorectv3d) | 2020-02-10 |
 
 ## Analyse et visualisation
 
 | Dépôt | Amont | Dernier push amont |
 |---|---|---|
-| [`open_iA`](https://github.com/tomocorpus/open_iA) | _dépôt propre_ | 2019-07-08 |
-| [`PDM`](https://github.com/tomocorpus/PDM) | _dépôt propre_ | 2017-06-28 |
-| [`PyRMLSeg`](https://github.com/tomocorpus/PyRMLSeg) | _dépôt propre_ | 2019-08-13 |
-| [`RECAST3D`](https://github.com/tomocorpus/RECAST3D) | _dépôt propre_ | 2019-11-04 |
+| [`open_iA`](https://github.com/tomocorpus/open_iA) | [`3dct/open_iA`](https://github.com/3dct/open_iA) | 2026-08-28 |
+| [`PDM`](https://github.com/tomocorpus/PDM) | [`cicwi/PDM`](https://github.com/cicwi/PDM) | 2017-06-28 |
+| [`PyRMLSeg`](https://github.com/tomocorpus/PyRMLSeg) | [`cicwi/PyRMLSeg`](https://github.com/cicwi/PyRMLSeg) | 2021-11-24 |
+| [`RECAST3D`](https://github.com/tomocorpus/RECAST3D) | [`cicwi/RECAST3D`](https://github.com/cicwi/RECAST3D) | 2020-05-29 |
 
 ## EIT et autre modalité
 
 | Dépôt | Amont | Dernier push amont |
 |---|---|---|
-| [`OpenEIT`](https://github.com/tomocorpus/OpenEIT) | _dépôt propre_ | 2019-06-19 |
-| [`pyEIT`](https://github.com/tomocorpus/pyEIT) | _dépôt propre_ | 2019-04-09 |
+| [`OpenEIT`](https://github.com/tomocorpus/OpenEIT) | [`OpenEIT/OpenEIT`](https://github.com/OpenEIT/OpenEIT) | 2025-07-22 |
+| [`pyEIT`](https://github.com/tomocorpus/pyEIT) | [`eitcom/pyEIT`](https://github.com/eitcom/pyEIT) | 2025-12-12 |
 
 ## MRI et microscopie
 
 | Dépôt | Amont | Dernier push amont |
 |---|---|---|
-| [`EMIRT.jl`](https://github.com/tomocorpus/EMIRT.jl) | _dépôt propre_ | 2018-09-28 |
-| [`mirt`](https://github.com/tomocorpus/mirt) | _dépôt propre_ | 2019-07-16 |
-| [`MIRT.jl`](https://github.com/tomocorpus/MIRT.jl) | _dépôt propre_ | 2019-07-17 |
-| [`MRIReco.jl`](https://github.com/tomocorpus/MRIReco.jl) | _dépôt propre_ | 2019-07-01 |
+| [`EMIRT.jl`](https://github.com/tomocorpus/EMIRT.jl) | [`seung-lab/EMIRT.jl`](https://github.com/seung-lab/EMIRT.jl) | 2018-09-28 |
+| [`mirt`](https://github.com/tomocorpus/mirt) | [`JeffFessler/mirt`](https://github.com/JeffFessler/mirt) | 2026-04-20 |
+| [`MIRT.jl`](https://github.com/tomocorpus/MIRT.jl) | [`JeffFessler/MIRT.jl`](https://github.com/JeffFessler/MIRT.jl) | 2026-07-21 |
+| [`MRIReco.jl`](https://github.com/tomocorpus/MRIReco.jl) | [`MagneticResonanceImaging/MRIReco.jl`](https://github.com/MagneticResonanceImaging/MRIReco.jl) | 2026-11-08 |
 
 ## Données et documentation
 
 | Dépôt | Amont | Dernier push amont |
 |---|---|---|
-| [`tomobank`](https://github.com/tomocorpus/tomobank) | _dépôt propre_ | 2026-11-10 |
-| [`tomopedia.github.io`](https://github.com/tomocorpus/tomopedia.github.io) | _dépôt propre_ | 2018-04-18 |
+| [`tomobank`](https://github.com/tomocorpus/tomobank) | [`tomography/tomobank`](https://github.com/tomography/tomobank) | 2026-09-01 |
+| [`tomopedia.github.io`](https://github.com/tomocorpus/tomopedia.github.io) | [`tomopedia/tomopedia.github.io`](https://github.com/tomopedia/tomopedia.github.io) | 2025-05-30 |
 
 ## Synchronisation des forks
 
-`sync-forks.yml` fusionne chaque lundi 06:00 (Europe/Paris) l'amont dans chaque fork, via `merge-upstream`.
+`sync-forks.yml` fusionne chaque lundi 06:00 (Europe/Paris) l'amont dans chaque fork via `merge-upstream`.
 
 Un fork modifié localement renvoie un conflit : il est **signalé, jamais écrasé**.
 
-| Élément | Où |
-|---|---|
-| `SYNC_TOKEN` | Settings → Secrets → Actions (PAT org, `Contents: RW`, 1 an) |
-| `CORPUS_OWNER` | Settings → Variables → `tomocorpus` |
+| Élément | Où | Valeur |
+|---|---|---|
+| `SYNC_TOKEN` | Secrets → Actions | PAT org, `Contents: RW` + `Workflows: RW`, 1 an |
+| `CORPUS_OWNER` | Variables → Actions | `tomocorpus` |
