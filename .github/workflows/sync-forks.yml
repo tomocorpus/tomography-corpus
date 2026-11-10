@@ -6,6 +6,9 @@ name: Sync tomography forks
 # GitHub, celui que déclenche le bouton « Sync fork ». Il fusionne la branche
 # amont dans le fork et reste sans effet si le fork est déjà à jour.
 #
+# OWNER : variable de dépôt CORPUS_OWNER (Settings → Variables). Par défaut
+# arbrefleur ; passer à l'organisation après transfert.
+#
 # Prérequis : un secret `SYNC_TOKEN` (PAT fine-grained) couvrant les dépôts
 # listés dans forks.json, avec Contents: Read and write. Un fork qui a été
 # modifié localement renverra 409 (conflit) : il est signalé, jamais écrasé.
@@ -52,6 +55,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
           DRY: ${{ inputs.dry_run || 'false' }}
+          OWNER: ${{ vars.CORPUS_OWNER || 'arbrefleur' }}
         run: |
           set -uo pipefail
           python3 - <<'PY' > repos.txt
@@ -67,14 +71,14 @@ jobs:
           while IFS=$'\t' read -r name parent; do
             [ -n "$name" ] || continue
             total=$((total+1))
-            branch="$(gh api "repos/arbrefleur/$name" --jq '.default_branch' 2>/dev/null || echo main)"
+            branch="$(gh api "repos/$OWNER/$name" --jq '.default_branch' 2>/dev/null || echo main)"
 
             if [ "$DRY" = "true" ]; then
               printf '%s\t%s\t%s\n' "$name" "$parent" "simulé" >> rapport.tsv
               continue
             fi
 
-            out="$(gh api -X POST "repos/arbrefleur/$name/merge-upstream" \
+            out="$(gh api -X POST "repos/$OWNER/$name/merge-upstream" \
                      -f branch="$branch" 2>&1)" || true
             status="$(printf '%s' "$out" | jq -r '.merge_type // empty' 2>/dev/null || true)"
 
