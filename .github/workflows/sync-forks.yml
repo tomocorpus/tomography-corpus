@@ -1,0 +1,118 @@
+name: Sync tomography forks
+
+# Synchronise chaque fork du corpus tomographie avec son dépôt amont.
+#
+# Méthode : `POST /repos/{owner}/{repo}/merge-upstream` — l'endpoint natif de
+# GitHub, celui que déclenche le bouton « Sync fork ». Il fusionne la branche
+# amont dans le fork et reste sans effet si le fork est déjà à jour.
+#
+# OWNER : variable de dépôt CORPUS_OWNER (Settings → Variables). Par défaut
+# arbrefleur ; passer à l'organisation après transfert.
+#
+# Prérequis : un secret `SYNC_TOKEN` (PAT fine-grained) couvrant les dépôts
+# listés dans forks.json, avec Contents: Read and write. Un fork qui a été
+# modifié localement renverra 409 (conflit) : il est signalé, jamais écrasé.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+      timezone: "Europe/Paris"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Simuler sans rien modifier"
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: sync-tomography-forks
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Vérifier le jeton
+        env:
+          SYNC_TOKEN: ${{ secrets.SYNC_TOKEN }}
+        run: |
+          if [ -z "$SYNC_TOKEN" ]; then
+            echo "::error::secret SYNC_TOKEN absent — la synchronisation ne peut pas s'authentifier"
+            exit 1
+          fi
+          echo "jeton présent"
+
+      - name: Fusionner l'amont dans chaque fork
+        env:
+          GH_TOKEN: ${{ secrets.SYNC_TOKEN }}
+          DRY: ${{ inputs.dry_run || 'false' }}
+          OWNER: ${{ vars.CORPUS_OWNER || 'arbrefleur' }}
+        run: |
+          set -uo pipefail
+          python3 - <<'PY' > repos.txt
+          import json
+          d = json.load(open("forks.json"))
+          for f in d["forks"]:
+              print(f["name"], f["parent"], sep="\t")
+          PY
+
+          total=0; sync=0; uptodate=0; conflict=0; erreur=0
+          : > rapport.tsv
+
+          while IFS=$'\t' read -r name parent; do
+            [ -n "$name" ] || continue
+            total=$((total+1))
+            branch="$(gh api "repos/$OWNER/$name" --jq '.default_branch' 2>/dev/null || echo main)"
+
+            if [ "$DRY" = "true" ]; then
+              printf '%s\t%s\t%s\n' "$name" "$parent" "simulé" >> rapport.tsv
+              continue
+            fi
+
+            out="$(gh api -X POST "repos/$OWNER/$name/merge-upstream" \
+                     -f branch="$branch" 2>&1)" || true
+            status="$(printf '%s' "$out" | jq -r '.merge_type // empty' 2>/dev/null || true)"
+
+            case " $out " in
+              *'"already up to date"'*|*'up-to-date'*) uptodate=$((uptodate+1)); res="à jour" ;;
+              *'"fast-forward"'*|*'"merge"'*|*'"none"'*)   sync=$((sync+1)); res="fusionné" ;;
+              *'409'*|*'conflict'*|*'diverged'*)           conflict=$((conflict+1)); res="conflit (modifs locales)" ;;
+              *                          )                 erreur=$((erreur+1)); res="erreur: $(printf '%s' "$out" | head -c 120)" ;;
+            esac
+            echo "  $name — $res"
+            printf '%s\t%s\t%s\n' "$name" "$parent" "$res" >> rapport.tsv
+            sleep 1
+          done < repos.txt
+
+          {
+            echo "## Synchronisation du corpus tomographie — $(date -u '+%Y-%m-%d %H:%M UTC')"
+            echo ""
+            echo "| Résultat | Nombre |"
+            echo "|---|---|"
+            echo "| dépôts examinés | $total |"
+            echo "| mis à jour | $sync |"
+            echo "| déjà à jour | $uptodate |"
+            echo "| conflits (modifs locales) | $conflict |"
+            echo "| erreurs | $erreur |"
+            echo ""
+            if [ "$conflict" -gt 0 ]; then
+              echo "### Conflits à traiter manuellement"
+              echo ""
+              awk -F'\t' '$3 ~ /conflit/ {print "- `"$1"` ("$2")"}' rapport.tsv
+              echo ""
+            fi
+            if [ "$erreur" -gt 0 ]; then
+              echo "### Erreurs"
+              echo ""
+              awk -F'\t' '$3 ~ /erreur/ {print "- `"$1"` — "$3}' rapport.tsv
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
