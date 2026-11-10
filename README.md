@@ -2,7 +2,7 @@
 
 Corpus `tomocorpus` : dépôts consacrés à la **tomographie**, à la **transformée de Radon** et aux techniques voisines.
 
-**54 dépôts** — 53 forks et 1 dépôt original.
+**60 dépôts** — 59 forks et 1 dépôt original.
 
 Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomography>
 
@@ -75,11 +75,17 @@ Filtre GitHub : <https://github.com/tomocorpus?tab=repositories&q=topic%3Atomogr
 | [`PyRMLSeg`](https://github.com/tomocorpus/PyRMLSeg) | [`cicwi/PyRMLSeg`](https://github.com/cicwi/PyRMLSeg) | 2021-11-24 |
 | [`RECAST3D`](https://github.com/tomocorpus/RECAST3D) | [`cicwi/RECAST3D`](https://github.com/cicwi/RECAST3D) | 2020-05-29 |
 
-## EIT et autre modalité
+## Tomographie d'impédance électrique (EIT)
 
 | Dépôt | Amont | Dernier push |
 |---|---|---|
+| [`BasisSimulator.jl`](https://github.com/tomocorpus/BasisSimulator.jl) | [`MolloiLab/BasisSimulator.jl`](https://github.com/MolloiLab/BasisSimulator.jl) | 2026-11-09 |
+| [`CalderonEITFEM`](https://github.com/tomocorpus/CalderonEITFEM) | [`DanielBoigk/CalderonEITFEM`](https://github.com/DanielBoigk/CalderonEITFEM) | 2025-03-13 |
+| [`EITDenoiser.jl`](https://github.com/tomocorpus/EITDenoiser.jl) | [`DanielBoigk/EITDenoiser.jl`](https://github.com/DanielBoigk/EITDenoiser.jl) | 2026-11-07 |
+| [`EITwithTV`](https://github.com/tomocorpus/EITwithTV) | [`DanielBoigk/EITwithTV`](https://github.com/DanielBoigk/EITwithTV) | 2025-09-25 |
+| [`ModularEIT.jl`](https://github.com/tomocorpus/ModularEIT.jl) | [`DanielBoigk/ModularEIT.jl`](https://github.com/DanielBoigk/ModularEIT.jl) | 2026-11-07 |
 | [`OpenEIT`](https://github.com/tomocorpus/OpenEIT) | [`OpenEIT/OpenEIT`](https://github.com/OpenEIT/OpenEIT) | 2025-07-22 |
+| [`PyEIDORS`](https://github.com/tomocorpus/PyEIDORS) | [`CBZ199671/PyEIDORS`](https://github.com/CBZ199671/PyEIDORS) | 2026-08-30 |
 | [`pyEIT`](https://github.com/tomocorpus/pyEIT) | [`eitcom/pyEIT`](https://github.com/eitcom/pyEIT) | 2025-12-12 |
 
 ## MRI et microscopie
